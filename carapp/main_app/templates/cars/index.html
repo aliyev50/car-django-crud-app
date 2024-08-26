@@ -1,0 +1,31 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/cars/car-index.css' %}"/>
+{% endblock %} 
+{% block content %}
+
+<section class="page-header">
+  <h1>Car List</h1>
+</section>
+
+<section class="card-container">
+  {% for car in cars %}
+    <div class="card">
+      <div class="card-content">
+        <div class="card-img-container">
+            <img
+            src=""
+            class="profile-pic"
+            alt="Power"
+          />
+        </div>
+        <h2 class="card-title">{{ car.brand }} {{ car.model }}</h2>
+        <p>A {{ car.year }} {{ car.brand }} {{ car.model }} priced at ${{ car.price }}</p>
+        <p><small>{{ car.description }}</small></p>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
