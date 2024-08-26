@@ -1,31 +1,35 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Car
 
 
 
-class Car:
-    def __init__(self, brand, model, year, price, description, image):
-        self.brand = brand
-        self.model = model
-        self.year = year
-        self.price = price
-        self.description = description
-        self.image = image
-        
-cars = [
-     Car('Toyota', 'Camry', 2020, 25000, 'A reliable and fuel-efficient sedan.', 'camry2020.jpg'),
-]
+class CarCreate(CreateView):
+    model = Car
+    fields = '__all__'
+    uccess_url = '/cars/'
+     
+     
+class CarUpdate(UpdateView):
+    model = Car
+    fields = '__all__'
 
+class CarDelete(DeleteView):
+    model = Car
+    success_url = '/cars/'
 
 def home(request):
     return render(request, 'home.html')
 
-# main_app/views.py
+def car_index(request):
+    cars = Car.objects.all()
+    return render(request, 'cars/index.html', {'cars': cars})
 
 def about(request):
     return render(request, 'about.html')
 
-def car_index(request):
-    cars = Car.objects.all()  # look familiar?
-    return render(request, 'cars/index.html', {'cars': cars})
+def car_detail(request, car_id):
+    car = Car.objects.get(id=car_id)
+    return render(request, 'cars/detail.html', {'car': car})
+
 

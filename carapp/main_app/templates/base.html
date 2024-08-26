@@ -17,12 +17,13 @@
     <header>
       <div class="header-logo-container">
         <a href="/">
-          <img src="{% static 'images/header-logo.svg' %}" alt="The Car Collector Logo" />
+          <img src="{% static '' %}" alt="The Car Collector Logo" />
         </a>
       </div>
       <nav>
         <ul>
           <li><a href="/cars">All Cars</a></li>
+          <li><a href="{% url 'car-create' %}">Add a Car</a></li>
           <li><a href="/about">About</a></li>
             
         </ul>

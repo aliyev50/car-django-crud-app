@@ -12,6 +12,7 @@
 <section class="card-container">
   {% for car in cars %}
     <div class="card">
+        <a href="/cars/{{ car.id }}">
       <div class="card-content">
         <div class="card-img-container">
             <img
@@ -21,9 +22,14 @@
           />
         </div>
         <h2 class="card-title">{{ car.brand }} {{ car.model }}</h2>
-        <p>A {{ car.year }} {{ car.brand }} {{ car.model }} priced at ${{ car.price }}</p>
+        {% if car.price > 0 %}
+            <p>A {{ car.year }} {{ car.brand }} {{ car.model }} priced at ${{ car.price }}</p>
+        {% else %}
+            <p>This car is currently available for free.</p>
+        {% endif %}
         <p><small>{{ car.description }}</small></p>
       </div>
+    </a>
     </div>
   {% endfor %}
 </section>
