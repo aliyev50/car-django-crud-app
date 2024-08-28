@@ -94,7 +94,7 @@ if 'ON_HEROKU' in os.environ:
             ssl_require=True,
         ),
     }
-else:
+    
 DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.postgresql',
