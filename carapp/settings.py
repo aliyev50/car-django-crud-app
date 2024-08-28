@@ -94,13 +94,13 @@ if 'ON_HEROKU' in os.environ:
             ssl_require=True,
         ),
     }
-    
-DATABASES = {
-   'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'carcollector',
+else:  
+    DATABASES = {
+    'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'carcollector',
+        }
     }
-}
 
 
 # Password validation
