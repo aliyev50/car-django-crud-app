@@ -26,6 +26,7 @@ main {
   .cat-container {
     width: 80%;
   }
+
   
   .login {
     display: flex;
@@ -84,4 +85,4 @@ main {
       max-width: 520px;
     }
   }
-  
+

@@ -7,6 +7,8 @@
 
 <section class="page-header">
   <h1>Car List</h1>
+  <img src="{% static 'images/side2.png' %}" alt="A cool cat" />
+  <img src="{% static 'images/carfox-phone (1).png' %}" alt="A cool cat" />
 </section>
 
 <section class="card-container">
@@ -15,21 +17,27 @@
         <a href="/cars/{{ car.id }}">
       <div class="card-content">
         <div class="card-img-container">
-            <img
-            src=""
-            class="profile-pic"
-            alt="Power"
-          />
+          <img src= {{ car.image }} class="profile-pic" alt="Car"  />
         </div>
+      </a>
         <h2 class="card-title">{{ car.brand }} {{ car.model }}</h2>
         {% if car.price > 0 %}
-            <p>A {{ car.year }} {{ car.brand }} {{ car.model }} priced at ${{ car.price }}</p>
+            <p>{{ car.year }} {{ car.brand }} {{ car.model }} priced at ${{ car.price }}</p>
         {% else %}
             <p>This car is currently available for free.</p>
         {% endif %}
         <p><small>{{ car.description }}</small></p>
+        <form action="/add-to-cart" class="d-inline">
+          <input type="hidden" name="car_id" value={{car.id}} />
+         <button type="submit"><a href="{% url 'add_to_cart' car.id %}">Add to Cart</a></button>
+         </form>
+         <form action="/add_to_favorites" class="d-inline">
+          <input type="hidden" name="car_id" value={{car.id}} />
+          <button type="submit"><a href="{% url 'add-to-favorites' car.id %}" >Add to Favorites</a></button>
+         </form>
+
       </div>
-    </a>
+  
     </div>
   {% endfor %}
 </section>

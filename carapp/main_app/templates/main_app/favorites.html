@@ -1,0 +1,73 @@
+<!-- cart/cart.html -->
+
+{% extends 'base.html' %} 
+{% block content %}
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		/* Add CSS styles for flex container and items */
+		.product-list {
+			display: flex;
+			flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
+			justify-content: space-between; /* Space items evenly along the main axis */
+			list-style: none; /* Remove list styles */
+			padding: 0;
+		}
+
+		.product-item {
+			
+			flex: 1; /* Grow to fill available space evenly */
+			/* Limit item width to avoid overcrowding */
+			margin: 10px; /* Add spacing between items */
+			border: rgb(36, 116, 248) solid 2px; /* Add a border for visual separation */
+			padding: 30px;
+			text-align: center;
+		}
+
+		button {
+			font-family: "Chilanka", cursive;
+			border: none;
+			padding: 5px 10px;
+			border-radius: 10px;
+			background-color: rgba(104, 197, 248, 0.9);
+			color: white;
+		  }
+
+	</style>
+</head>
+
+<body>
+
+	<h1>Your Favorites</h1>
+
+
+
+	
+
+	<section class="favorites-container">
+		{% for favorite in favorites %}
+		<div class="product-item">
+			<div class="cat-img">
+				<img src="{{ favorite.car.image }}" class="profile-pic" alt="Car"/>
+			</div>
+			<div class="cat-details">
+				<h2>{{ favorite.car.brand }} {{ favorite.car.model }}</h2>
+				{% if favorite.car.price > 0 %}
+					<h1>{{ favorite.car.year }} {{ favorite.car.brand }} {{ favorite.car.model }} - ${{ favorite.car.price }}</h1>
+				{% else %}
+				{% endif %}
+				<h1><small>{{ favorite.car.description }}</small></h1>
+				<a href="{% url 'remove_from_favorites' favorite.id %}" class="btn btn-danger">Remove from Favorites</a>
+			</div>
+		</div>
+		{% empty %}
+			<p>You have no favorite cars yet.</p>
+		{% endfor %}
+	</section>
+
+
+</body>
+
+{% endblock %}

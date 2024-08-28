@@ -1,3 +1,4 @@
+
 .cat-container {
     padding: 35px 30px;
     display: flex;
@@ -218,3 +219,12 @@
     }
   }
   
+
+
+  .profile-pic {
+    height: 200px;
+    width: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    
+  }

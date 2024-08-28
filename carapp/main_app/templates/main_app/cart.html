@@ -1,0 +1,67 @@
+<!-- cart/cart.html -->
+
+{% extends 'base.html' %} 
+{% block content %}
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		/* Add CSS styles for flex container and items */
+		.product-list {
+			display: flex;
+			flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
+			justify-content: space-between; /* Space items evenly along the main axis */
+			list-style: none; /* Remove list styles */
+			padding: 0;
+		}
+
+		.product-item {
+			
+			flex: 1; /* Grow to fill available space evenly */
+			/* Limit item width to avoid overcrowding */
+			margin: 10px; /* Add spacing between items */
+			border: rgb(36, 116, 248) solid 2px; /* Add a border for visual separation */
+			padding: 30px;
+			text-align: center;
+		}
+
+		button {
+			font-family: "Chilanka", cursive;
+			border: none;
+			padding: 5px 10px;
+			border-radius: 10px;
+			background-color: rgba(104, 197, 248, 0.9);
+			color: white;
+		  }
+
+	</style>
+</head>
+
+<body>
+
+	<h1>Your Shopping Cart</h1>
+
+	<div class="product-list">
+
+	
+
+	{% for item in cart_items %}
+	<div class="product-item">
+		<h2 class="card-title">{{ car.brand }} {{ car.model }}</h2>
+		<h1> {{ car.brand }} {{ car.model }} ({{ item.quantity }})</h1>
+		<h1>Price: ${{ item.car.price }}</h1>
+		<button type="submit"><a href="{% url 'remove_from_cart' item.id %}">Remove</a></button>
+	</div>
+	{% empty %}
+	<p>Your cart is empty.</p>
+	{% endfor %}
+
+	</div>
+
+	<h1>Total Price: ${{ total_price }}</h1>
+
+
+</body>
+
+{% endblock %}
