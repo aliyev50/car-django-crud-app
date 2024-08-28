@@ -1,1 +1,1 @@
-web: gunicorn <carapp>.wsgi
+web: gunicorn carapp.wsgi
